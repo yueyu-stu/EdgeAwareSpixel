@@ -22,3 +22,13 @@ Run `python inference.py`
 * This work, i.e. EdgeAwareSpixel, is licensed under the MIT License.
 * [ss-with-RIM](https://github.com/DensoITLab/ss-with-RIM) is licensed under a customized license.
 * License of Side Window Filter in Pytorch version is default.
+
+## Update
+
+This work bases on Information Maximization, so as [ss-with-RIM](https://github.com/DensoITLab/ss-with-RIM). To implement regularization, one could modify Adam optimizer by
+* Pytorch 1.6: substitute Adam with AdamW and pass weigh_decay parameter when initializing the optimizer
+* Pytorch 1.9: pass weight_decay paramter when initalizing Adam optimizer, since two optimizers realize the strategy of regularization in the same way
+
+For this work, after adding regularization, BR and PR do not change, while ASA becomes slightly higher. We think that
+* the edge-aware term could adhere to edges in images strongly
+* regularization term could restrain the generation of meaningless superpixels
